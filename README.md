@@ -1,6 +1,9 @@
 # getIpInfo
+
 将文本中含有的IP进行标记、添加IP物理位置标记，并进行输出。提取存在的外网IP，依赖奇安信威胁分析武器库进行批量自动化情报查询，展示IP信誉详情、实现检测详情、恶意详情以及数据统计，并输出xlsx表格。
-将文本中含有的IP进行标记、添加IP物理位置标记，并进行输出。提取存在的外网IP，依赖奇安信威胁分析武器库进行批量自动化情报查询，展示IP信誉详情、实现检测详情、恶意详情以及数据统计，并输出xlsx表格。Mark the IP contained in the text and add the IP physical location mark. Extract the existing Internet IP, perform batch automatic intelligence query, and display the IP reputation details, implementation detection details, malicious details, and data statistics.
+
+Mark the IP contained in the text and add the IP physical location mark. Extract the existing Internet IP, perform batch automatic intelligence query, and display the IP reputation details, implementation detection details, malicious details, and data statistics.
+
 # 适用场景
 - 适用于[安服工作]中针对DMZ服务器入站IP批量自动化情报查询；
 
@@ -33,3 +36,4 @@
 ![image](/img/6.png)
 
 ![image](/img/7.png)
+>>>>>>> 5c13139 (init)
