@@ -23,6 +23,10 @@ Mark the IP contained in the text and add the IP physical location mark. Extract
 
 ![image](/img/2.png)
 
+### 每天第一次使用批量自动化情报查询，需要先获取个人cookie信息：
+
+![image](/img/8.png)
+
 ### 批量自动化情报查询，粗略打印内容，详细内容保存为xlsx：
 
 ![image](/img/3.png)
@@ -36,4 +40,3 @@ Mark the IP contained in the text and add the IP physical location mark. Extract
 ![image](/img/6.png)
 
 ![image](/img/7.png)
->>>>>>> 5c13139 (init)
