@@ -26,7 +26,7 @@ Mark the IP contained in the text and add the IP physical location mark. Extract
 - 第一次使用脚本时，会自动下载最新纯真IP数据库，请耐心等待。
 - 若需更新纯真IP数据库，请删除根目录下qqwry.dat文件。
 
-### 每天第一次使用批量自动化情报查询，需要先获取个人cookie信息：
+### 每天第一次使用批量自动化情报查询，需要先获取个人cookie信息(有坑,认真看)：
 
 - 19号之前存在接口越权问题，个人用户可访问所有武器库功能，可直接使用个人账户cookie信息
 
