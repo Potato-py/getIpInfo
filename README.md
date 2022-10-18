@@ -23,9 +23,29 @@ Mark the IP contained in the text and add the IP physical location mark. Extract
 
 ![image](/img/2.png)
 
+- 第一次使用脚本时，会自动下载最新纯真IP数据库，请耐心等待。
+- 若需更新纯真IP数据库，请删除根目录下qqwry.dat文件。
+
 ### 每天第一次使用批量自动化情报查询，需要先获取个人cookie信息：
 
+- 19号之前存在接口越权问题，个人用户可访问所有武器库功能，可直接使用个人账户cookie信息
+
 ![image](/img/8.png)
+
+- **19号上午才上传的初版脚本V1.0，下午就被修复了一个BUG(导致个人用户无权限使用接口)，虎厂牛逼plus**
+- 但是！还有两个bug呢宝儿(这个就不多说了)，针对于这次修复，我们先对比一下个人用户权限及员工权限：
+
+![image](/img/9.png)
+
+![image](/img/10.png)
+
+- 奇安信也算是天花板了，所有很多小伙伴都有奇安信蓝信账号(做过奇安信外包的小伙伴应该也有)
+- 使用内部员工登录即可（有奇安信蓝信账号即可，原厂和做过奇安信外包的应该都有）：
+- [https://user.ti.qianxin.com/login/?tab=Staff&next=http%3A%2F%2Fti.qianxin.com%2Flogin](https://user.ti.qianxin.com/login/?tab=Staff&next=http%3A%2F%2Fti.qianxin.com%2Flogin)
+
+![image](/img/11.png)
+
+- 脚本使用时会提示输入cookie-session值，并自动保存无需再次输入，直至cookie过期。
 
 ### 批量自动化情报查询，粗略打印内容，详细内容保存为xlsx：
 

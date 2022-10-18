@@ -22,7 +22,9 @@ except:
 
 #更新纯真ip数据库,可手动触发
 def updatePos():
+    print(Processing+"正在更新最新纯真IP数据库，请稍等……")
     updateQQwry('qqwry.dat')
+    print(Result+"纯真IP数据库更新完毕！")
 
 def ipPos(ipList):  #返回字典、自带去重
     q = QQwry()
