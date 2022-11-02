@@ -60,3 +60,14 @@ Mark the IP contained in the text and add the IP physical location mark. Extract
 ![image](/img/6.png)
 
 ![image](/img/7.png)
+
+# UPDATE 2022年11月02日09:09:27
+
+- 第一部分功能已做出线上版本：
+- [https://potato.gold/navbar/tool/getIpInfo/IpInfo.html](https://potato.gold/navbar/tool/getIpInfo/IpInfo.html)
+
+![image](/img/web1.png)
+
+![image](/img/web2.png)
+
+- 线上版本暂不考虑自动化威胁情报查询，如有其他需求，请提Issues/主页留言!
