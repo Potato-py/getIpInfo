@@ -3,7 +3,8 @@ from configparser import ConfigParser
 import requests,time,json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-import xlrd #pip install xlrd==1.2.0
+from openpyxl import load_workbook
+
 try:
     from font import *
 except:
@@ -76,7 +77,7 @@ def ipReputationFromQax(tempDataList,analysis=False,needNewCookie=False):
     data = '{"upload_type_name":"ip_reputation_analysis","file_str":"'+r"\n".join(dataList)+'"}'
     msg = ''
     try:
-        req1 = requests.post(url="https://ares.ti.qianxin.com/arsenal/api/uploadStr", headers=headers, data=data, verify=False, allow_redirects=False,timeout=5)
+        req1 = requests.post(url="https://ares.ti.qianxin.com/arsenal/api/v2/uploadStr", headers=headers, data=data, verify=False, allow_redirects=False,timeout=5)
         msg = req1.json()['message']
     except Exception as e:
         print(Error+str(e))
@@ -93,12 +94,12 @@ def ipReputationFromQax(tempDataList,analysis=False,needNewCookie=False):
         print(Information+"请检查接口是否存在异常/更换您的cookie值")
         return False
     time.sleep(3)#等待服务端解析
-    data = '{"upload_type_name":"ip_reputation_analysis"}'
+    data = '{"page": 1,"page_size": 10}'
     try:
-        req1 = requests.post(url="https://ares.ti.qianxin.com/arsenal/api/task/userLatestTaskInfo", headers=headers, data=data, verify=False, allow_redirects=False,timeout=5)
-        msg = req1.json()['data']['download_report_url']
-        fileName = req1.json()['data']['report_file_name']
-        if(msg=='' or 'https://shs3.b.qianxin.com' not in msg):
+        req1 = requests.post(url="https://ares.ti.qianxin.com/arsenal/api/v2/task-list", headers=headers, data=data, verify=False, allow_redirects=False,timeout=5)
+        msg = req1.json()['data']['result'][0]['result_file_url']
+        fileName = req1.json()['data']['result'][0]['result_file_name']
+        if(msg == None or msg==""):
             print(Error+req1.json()['message'])
             return False
     except Exception as e:
@@ -117,25 +118,23 @@ def ipReputationFromQax(tempDataList,analysis=False,needNewCookie=False):
         return False
     #解析xlsx文档，读取数据
     result=[]
-    wb = xlrd.open_workbook(f'./Result/{fileName}')
-    sheetNames = wb.sheet_names()
+    wb = load_workbook(f'./Result/{fileName}', data_only=True)
+    sheetNames = wb.sheetnames
     for i in sheetNames:
-        sheet = wb.sheet_by_name(i)
+        sheet = wb[i]
         sheetData = []
-        [sheetData.append(sheet.row_values(j)) for j in range(sheet.nrows)]
+        for row in sheet.iter_rows(values_only=True):
+            sheetData.append(list(row))
         result.append(sheetData)
 
     printDataList = result[0][1:]
     printT( [15,10,7,7,14,22,5] ,"top")
-    printT( [["IP",15],["国家",10],["IDC",7],["代理",7],["最近解析域名",14],["攻击类型",22],["...",5]])
+    printT( [["IP",15],["国家",10],["归属组织",7],["解析域名",14],["恶意类型",22],["...",5]])
     for printData in printDataList:
         printT( [15,10,7,7,14,22,5] ,"middle")
-        typeList=printData[-2].split(",")
-        type ='-' if printData[-2]=="" else printData[-2]
-        if(len(typeList)>1):
-            type = typeList[0]+','+typeList[1]
-        domain = '-' if printData[12]=="" else printData[12]
-        printT( [[printData[0],15],[printData[1],10],[printData[8],7],[printData[9],7],[domain,14],[type,22],["...",5]])
+        type ='-' if printData[-4]=="" else printData[-4]
+        domain = '-' if printData[13]=="" else printData[13]
+        printT( [[printData[0],15],[printData[2],10],[printData[10],7],[domain,14],[type,22],["...",5]])
     printT( [15,10,7,7,14,22,5] ,"bottom")
     print(Result+f'IP详细内容已输出至文件：./Result/{fileName}')
     return result
